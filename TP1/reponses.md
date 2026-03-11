@@ -24,7 +24,7 @@ CREATE TABLE section(
 Cette table représente une **instance d’un cours** donnée à un semestre et une année précis.  
 La clé primaire est composée de `(course_id, sec_id, semester, year)` car un même cours peut être proposé plusieurs fois selon la section et la période.
 
--
+---
 
 ### Question 2 : Explication du diagramme entité-association
 
