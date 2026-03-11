@@ -26,8 +26,8 @@ CREATE TABLE section(
 Le schéma relationnel fourni modélise l'organisation et la gestion pédagogique d'une université. Voici l'explication de sa structure :
 
 * **Les Entités (les objets principaux) :**
-  * **`department`** : Les départements de l'université (ex: Informatique, Biologie).
-  * **`course`** : Le catalogue des matières proposées (titre, nombre de crédits).
+  * **`department`** : Les départements de l'université.
+  * **`course`** : Le catalogue des matières proposées.
   * **`student`** et **`instructor` (ou `teacher`)** : Les étudiants et les professeurs.
   * **`section`** : Représente la programmation physique d'un cours (un cours donné lors d'un semestre précis, une année précise, dans une salle spécifique).
   * **`classroom`** et **`time_slot`** : Les salles physiques et les créneaux horaires.
