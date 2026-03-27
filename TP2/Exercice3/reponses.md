@@ -9,23 +9,35 @@ F = {A --> BC, CD --> E, B --> D, E --> A}
 Exemples de dépendances dérivées :
 
 A --> B
+
 A --> C
+
 A --> D
+
 A --> E
+
 A --> BCDE
 
 E --> A
+
 E --> B
+
 E --> C
+
 E --> D
 
 CD --> E
+
 CD --> A
+
 CD --> B
+
 CD --> C
+
 CD --> D
 
 Cela permet de générer plus de 16 dépendances fonctionnelles.
+
 
 
 Question 2
