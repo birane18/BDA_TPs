@@ -30,24 +30,24 @@ La clé primaire est composée de `(course_id, sec_id, semester, year)` car un m
 
 Le schéma relationnel représente l’organisation pédagogique d’une université et les relations entre ses différentes entités.
 
-**Les principales entités :**
+Les principales entités :
 
-- `department` : représente les départements de l’université.
-- `course` : contient la liste des cours proposés.
-- `student` : représente les étudiants.
-- `teacher` : représente les enseignants.
-- `section` : correspond à une session précise d’un cours (semestre, année, salle).
-- `classroom` : représente les salles de cours.
-- `time_slot` : correspond aux créneaux horaires.
+- department : représente les départements de l’université.
+- course : contient la liste des cours proposés.
+- student : représente les étudiants.
+- teacher : représente les enseignants.
+- section : correspond à une session précise d’un cours (semestre, année, salle).
+- classroom : représente les salles de cours.
+- time_slot : correspond aux créneaux horaires.
 
-**Les relations entre ces entités :**
+Les relations entre ces entités :
 
-- `takes` : relie les étudiants aux sections qu’ils suivent et peut contenir la note obtenue.
-- `teaches` : relie les enseignants aux sections qu’ils enseignent.
-- `advisor` : indique quel enseignant est le tuteur d’un étudiant.
-- `prereq` : définit les prérequis nécessaires pour suivre un cours.
+- takes : relie les étudiants aux sections qu’ils suivent et peut contenir la note obtenue.
+- teaches : relie les enseignants aux sections qu’ils enseignent.
+- advisor : indique quel enseignant est le tuteur d’un étudiant.
+- prereq : définit les prérequis nécessaires pour suivre un cours.
 
-Ce modèle permet donc de représenter les **cours, les enseignants, les étudiants et leurs interactions**.
+Ce modèle permet donc de représenter les cours, les enseignants, les étudiants et leurs interactions.
 
 
 
@@ -79,8 +79,8 @@ SELECT * FROM section;
 ```
 
 
-- `DESC section` permet d’afficher la **structure de la relation** (colonnes et types).
-- `SELECT *` permet d’afficher **tous les tuples** présents dans la table.
+- DESC section permet d’afficher la **structure de la relation** (colonnes et types).
+- SELECT * permet d’afficher **tous les tuples** présents dans la table.
 
 
 
@@ -103,7 +103,7 @@ SELECT title, dept_name FROM course;
 
 
 
-On effectue une **projection** sur les attributs `title` et `dept_name` afin d’obtenir le titre des cours et le département qui les propose.
+On effectue une projection sur les attributs `title` et `dept_name` afin d’obtenir le titre des cours et le département qui les propose.
 
 
 
@@ -115,7 +115,7 @@ SELECT dept_name, budget FROM department;
 
 
 
-Projection des attributs `dept_name` et `budget` de la relation `department`.
+Projection des attributs dept_name et budget de la relation department.
 
 ---
 
@@ -138,7 +138,7 @@ SELECT name FROM teacher WHERE salary > 65000;
 
 
 
-On applique une **sélection** sur la relation `teacher` avec la condition `salary > 65000`.
+On applique une **sélection** sur la relation teacher avec la condition salary > 65000.
 
 
 
@@ -149,10 +149,10 @@ SELECT name FROM teacher WHERE salary BETWEEN 55000 AND 85000;
 ```
 
 
-La clause `BETWEEN` permet de sélectionner les enseignants dont le salaire appartient à cet intervalle.
+La clause BETWEEN permet de sélectionner les enseignants dont le salaire appartient à cet intervalle.
 
 
-### Question 8 : Départements présents dans la table `teacher`
+### Question 8 : Départements présents dans la table teacher
 
 ```sql
 SELECT DISTINCT dept_name FROM teacher;
@@ -160,7 +160,7 @@ SELECT DISTINCT dept_name FROM teacher;
 
 
 
-`DISTINCT` permet d’éliminer les doublons et d’obtenir chaque département une seule fois.
+ DISTINCT permet d’éliminer les doublons et d’obtenir chaque département une seule fois.
 
 
 
@@ -173,7 +173,7 @@ WHERE salary > 65000 AND dept_name = 'Comp. Sci.';
 
 
 
-On applique une **sélection avec deux conditions** : le salaire et le département.
+On applique une sélection avec deux conditions : le salaire et le département.
 
 
 ### Question 10 : Cours proposés au printemps 2010
@@ -212,7 +212,7 @@ WHERE teacher.dept_name = department.dept_name;
 
 
 
-On réalise une **jointure entre `teacher` et `department`** sur l’attribut `dept_name` afin d’obtenir le bâtiment du département de chaque enseignant.
+On réalise une jointure entre teacher et department sur l’attribut dept_name afin d’obtenir le bâtiment du département de chaque enseignant.
 
 
 
@@ -228,7 +228,7 @@ AND course.dept_name = 'Comp. Sci.';
 
 
 
-On effectue une **jointure entre `student`, `takes` et `course`** pour identifier les étudiants ayant suivi au moins un cours du département informatique.
+On effectue une jointure entre student, takes et course pour identifier les étudiants ayant suivi au moins un cours du département informatique.
 
 
 
@@ -248,7 +248,7 @@ AND teacher.name = 'Einstein';
 
 
 
-On réalise plusieurs **jointures entre `student`, `takes`, `teaches` et `teacher`** afin d’identifier les étudiants ayant suivi une section enseignée par Einstein.
+On réalise plusieurs jointures entre student, takes, teaches et teacher afin d’identifier les étudiants ayant suivi une section enseignée par Einstein.
 
 
 
@@ -261,7 +261,7 @@ WHERE teacher.ID = teaches.ID;
 ```
 
 
-Jointure entre `teacher` et `teaches` afin d’associer chaque enseignant aux cours qu’il a enseignés.
+Jointure entre teacher et teaches afin d’associer chaque enseignant aux cours qu’il a enseignés.
 
 
 
@@ -276,7 +276,7 @@ GROUP BY takes.course_id, takes.sec_id, takes.semester, takes.year;
 
 
 
-Après une **sélection sur la période**, on effectue une **agrégation avec `COUNT`** et un `GROUP BY` afin de compter le nombre d’étudiants par section.
+Après une sélection sur la période, on effectue une agrégation avec COUNT et un GROUP BY afin de compter le nombre d’étudiants par section.
 
 
 
@@ -290,7 +290,7 @@ GROUP BY dept_name;
 
 
 
-On regroupe les enseignants par département puis on applique la fonction d’agrégation `MAX`.
+On regroupe les enseignants par département puis on applique la fonction d’agrégation MAX.
 
 
 
@@ -338,7 +338,7 @@ GROUP BY department.dept_name;
 
 
 
-On réalise plusieurs **jointures entre `section`, `teaches`, `teacher` et `department`** et on conserve uniquement les cours qui ont lieu dans le bâtiment du département de l’enseignant.
+On réalise plusieurs jointures entre section, teaches, teacher et department et on conserve uniquement les cours qui ont lieu dans le bâtiment du département de l’enseignant.
 
 
 
@@ -356,7 +356,7 @@ ORDER BY course.title;
 
 
 
-Jointure entre plusieurs relations afin d’obtenir le titre des cours et le nom des enseignants, puis tri avec `ORDER BY`.
+Jointure entre plusieurs relations afin d’obtenir le titre des cours et le nom des enseignants, puis tri avec ORDER BY.
 
 
 
@@ -387,8 +387,8 @@ GROUP BY student.name;
 
 
 
-Jointure entre `student`, `takes` et `course`.  
-On garde uniquement les cours suivis **en dehors du département de l’étudiant** puis on calcule la somme des crédits.
+Jointure entre student, takes et course.  
+On garde uniquement les cours suivis en dehors du département de l’étudiant puis on calcule la somme des crédits.
 
 
 ### Question 24 : Total des crédits par bâtiment
@@ -401,4 +401,4 @@ GROUP BY section.building;
 ```
 
 
-Jointure entre `section` et `course` pour récupérer les crédits des cours, puis agrégation avec `SUM` afin d’obtenir le total par bâtiment.
+Jointure entre section et course pour récupérer les crédits des cours, puis agrégation avec SUM afin d’obtenir le total par bâtiment.
