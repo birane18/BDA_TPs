@@ -2,7 +2,8 @@
 
 ## Exercice 1
 
-### Question 1 : Définition de la table `section`
+Question 1 : Définition de la table `section`
+
 
 Voici la commande SQL permettant de créer la table `section` avec ses contraintes :
 
