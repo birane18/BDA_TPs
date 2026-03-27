@@ -26,7 +26,7 @@ La clé primaire est composée de `(course_id, sec_id, semester, year)` car un m
 
 
 
-### Question 2 : Explication du diagramme entité-association
+### Question 2 : 
 
 Le schéma relationnel représente l’organisation pédagogique d’une université et les relations entre ses différentes entités.
 
@@ -53,12 +53,9 @@ Ce modèle permet donc de représenter les **cours, les enseignants, les étudia
 
 ### Question 3 : Création et peuplement de la base
 
-Les scripts fournis (`universityDB-createschema.sql` et `universityDB-data.sql`) ont été exécutés dans **Oracle APEX**.
+Voir universityDB-createschema.sql et universityDB-data.sql)
 
-Le premier script crée les tables et leurs contraintes, tandis que le second insère les données dans la base.  
-L’exécution s’est déroulée correctement et la base a été créée sans erreur.
 
----
 
 ### Question 4 : Insertion d’un nouveau cours
 
@@ -68,9 +65,9 @@ Requête SQL utilisée pour ajouter un cours de biologie :
 INSERT INTO course VALUES ('BIO-101', 'Intro. to Biology', 'Biology', '4');
 ```
 
-Cette instruction insère un nouveau tuple dans la relation `course`.
+Cette instruction insère un nouveau tuple dans la relation course.
 
----
+
 
 # Exercice 2 : Requêtes SQL
 
@@ -81,12 +78,11 @@ DESC section;
 SELECT * FROM section;
 ```
 
-**Explication :**
 
 - `DESC section` permet d’afficher la **structure de la relation** (colonnes et types).
 - `SELECT *` permet d’afficher **tous les tuples** présents dans la table.
 
----
+
 
 ### Question 2 : Liste des cours disponibles
 
@@ -94,11 +90,10 @@ SELECT * FROM section;
 SELECT * FROM course;
 ```
 
-**Explication :**
+
 
 Cette requête effectue une **sélection complète** de la relation `course`.
 
----
 
 ### Question 3 : Titres des cours et départements
 
@@ -106,11 +101,11 @@ Cette requête effectue une **sélection complète** de la relation `course`.
 SELECT title, dept_name FROM course;
 ```
 
-**Explication :**
+
 
 On effectue une **projection** sur les attributs `title` et `dept_name` afin d’obtenir le titre des cours et le département qui les propose.
 
----
+
 
 ### Question 4 : Départements et leur budget
 
@@ -118,7 +113,7 @@ On effectue une **projection** sur les attributs `title` et `dept_name` afin d�
 SELECT dept_name, budget FROM department;
 ```
 
-**Explication :**
+
 
 Projection des attributs `dept_name` et `budget` de la relation `department`.
 
@@ -130,11 +125,10 @@ Projection des attributs `dept_name` et `budget` de la relation `department`.
 SELECT name, dept_name FROM teacher;
 ```
 
-**Explication :**
 
 On affiche le nom des enseignants ainsi que leur département.
 
----
+
 
 ### Question 6 : Enseignants ayant un salaire supérieur à 65 000 $
 
@@ -142,11 +136,11 @@ On affiche le nom des enseignants ainsi que leur département.
 SELECT name FROM teacher WHERE salary > 65000;
 ```
 
-**Explication :**
+
 
 On applique une **sélection** sur la relation `teacher` avec la condition `salary > 65000`.
 
----
+
 
 ### Question 7 : Enseignants avec un salaire entre 55 000 et 85 000
 
@@ -154,11 +148,9 @@ On applique une **sélection** sur la relation `teacher` avec la condition `sala
 SELECT name FROM teacher WHERE salary BETWEEN 55000 AND 85000;
 ```
 
-**Explication :**
 
 La clause `BETWEEN` permet de sélectionner les enseignants dont le salaire appartient à cet intervalle.
 
----
 
 ### Question 8 : Départements présents dans la table `teacher`
 
@@ -166,11 +158,11 @@ La clause `BETWEEN` permet de sélectionner les enseignants dont le salaire appa
 SELECT DISTINCT dept_name FROM teacher;
 ```
 
-**Explication :**
+
 
 `DISTINCT` permet d’éliminer les doublons et d’obtenir chaque département une seule fois.
 
----
+
 
 ### Question 9 : Enseignants du département informatique avec salaire > 65 000
 
@@ -179,11 +171,10 @@ SELECT name FROM teacher
 WHERE salary > 65000 AND dept_name = 'Comp. Sci.';
 ```
 
-**Explication :**
+
 
 On applique une **sélection avec deux conditions** : le salaire et le département.
 
----
 
 ### Question 10 : Cours proposés au printemps 2010
 
@@ -192,11 +183,11 @@ SELECT * FROM section
 WHERE semester = 'Spring' AND year = 2010;
 ```
 
-**Explication :**
+
 
 Sélection des sections correspondant au semestre Spring de l’année 2010.
 
----
+
 
 ### Question 11 : Cours d’informatique avec plus de 3 crédits
 
@@ -205,11 +196,11 @@ SELECT title FROM course
 WHERE dept_name = 'Comp. Sci.' AND credits > 3;
 ```
 
-**Explication :**
+
 
 Sélection des cours du département informatique ayant plus de 3 crédits.
 
----
+
 
 ### Question 12 : Enseignants, département et bâtiment
 
@@ -219,11 +210,11 @@ FROM teacher, department
 WHERE teacher.dept_name = department.dept_name;
 ```
 
-**Explication :**
+
 
 On réalise une **jointure entre `teacher` et `department`** sur l’attribut `dept_name` afin d’obtenir le bâtiment du département de chaque enseignant.
 
----
+
 
 ### Question 13 : Étudiants ayant suivi un cours d’informatique
 
@@ -235,11 +226,11 @@ AND takes.course_id = course.course_id
 AND course.dept_name = 'Comp. Sci.';
 ```
 
-**Explication :**
+
 
 On effectue une **jointure entre `student`, `takes` et `course`** pour identifier les étudiants ayant suivi au moins un cours du département informatique.
 
----
+
 
 ### Question 14 : Étudiants ayant eu un cours avec Einstein
 
@@ -255,11 +246,11 @@ AND teaches.ID = teacher.ID
 AND teacher.name = 'Einstein';
 ```
 
-**Explication :**
+
 
 On réalise plusieurs **jointures entre `student`, `takes`, `teaches` et `teacher`** afin d’identifier les étudiants ayant suivi une section enseignée par Einstein.
 
----
+
 
 ### Question 15 : Cours enseignés par chaque professeur
 
@@ -269,11 +260,10 @@ FROM teacher, teaches
 WHERE teacher.ID = teaches.ID;
 ```
 
-**Explication :**
 
 Jointure entre `teacher` et `teaches` afin d’associer chaque enseignant aux cours qu’il a enseignés.
 
----
+
 
 ### Question 16 : Nombre d’étudiants par section (Spring 2010)
 
@@ -284,11 +274,11 @@ WHERE takes.semester = 'Spring' AND takes.year = 2010
 GROUP BY takes.course_id, takes.sec_id, takes.semester, takes.year;
 ```
 
-**Explication :**
+
 
 Après une **sélection sur la période**, on effectue une **agrégation avec `COUNT`** et un `GROUP BY` afin de compter le nombre d’étudiants par section.
 
----
+
 
 ### Question 17 : Salaire maximum par département
 
@@ -298,11 +288,11 @@ FROM teacher
 GROUP BY dept_name;
 ```
 
-**Explication :**
+
 
 On regroupe les enseignants par département puis on applique la fonction d’agrégation `MAX`.
 
----
+
 
 ### Question 18 : Nombre d’étudiants par section
 
@@ -312,11 +302,11 @@ FROM takes
 GROUP BY takes.course_id, takes.sec_id, takes.semester, takes.year;
 ```
 
-**Explication :**
+
 
 Agrégation sur les sections pour compter le nombre d’inscrits dans chacune d’elles.
 
----
+
 
 ### Question 19 : Nombre de cours par bâtiment
 
@@ -327,11 +317,11 @@ WHERE (semester, year) IN (('Fall', 2009), ('Spring', 2010))
 GROUP BY building;
 ```
 
-**Explication :**
+
 
 On filtre les sections correspondant aux périodes demandées puis on compte le nombre de cours par bâtiment.
 
----
+
 
 ### Question 20 : Cours dispensés dans le bâtiment du département
 
@@ -346,11 +336,11 @@ AND department.building = section.building
 GROUP BY department.dept_name;
 ```
 
-**Explication :**
+
 
 On réalise plusieurs **jointures entre `section`, `teaches`, `teacher` et `department`** et on conserve uniquement les cours qui ont lieu dans le bâtiment du département de l’enseignant.
 
----
+
 
 ### Question 21 : Titres des cours et enseignants
 
@@ -364,11 +354,11 @@ AND section.course_id = course.course_id
 ORDER BY course.title;
 ```
 
-**Explication :**
+
 
 Jointure entre plusieurs relations afin d’obtenir le titre des cours et le nom des enseignants, puis tri avec `ORDER BY`.
 
----
+
 
 ### Question 22 : Nombre de cours par semestre
 
@@ -378,11 +368,11 @@ FROM section
 GROUP BY semester;
 ```
 
-**Explication :**
+
 
 On regroupe les sections par semestre et on compte le nombre de cours pour chaque période.
 
----
+
 
 ### Question 23 : Crédits obtenus hors département
 
@@ -395,12 +385,11 @@ AND student.dept_name != course.dept_name
 GROUP BY student.name;
 ```
 
-**Explication :**
+
 
 Jointure entre `student`, `takes` et `course`.  
 On garde uniquement les cours suivis **en dehors du département de l’étudiant** puis on calcule la somme des crédits.
 
----
 
 ### Question 24 : Total des crédits par bâtiment
 
@@ -411,6 +400,5 @@ WHERE section.course_id = course.course_id
 GROUP BY section.building;
 ```
 
-**Explication :**
 
 Jointure entre `section` et `course` pour récupérer les crédits des cours, puis agrégation avec `SUM` afin d’obtenir le total par bâtiment.
