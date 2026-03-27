@@ -73,10 +73,10 @@ Cette instruction insère un nouveau tuple dans la relation course.
 
 Question 1 : Structure et contenu de la relation `section`
 
-
+```sql
 DESC section;
 SELECT * FROM section;
-
+```
 
 
 - DESC section permet d’afficher les colonnes et leurs types.
