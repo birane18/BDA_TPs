@@ -21,10 +21,10 @@ CREATE TABLE section(
 );
 ```
 
-Cette table représente une **instance d’un cours** donnée à un semestre et une année précis.  
+Cette table représente une instance d’un cours donnée à un semestre et une année précis.  
 La clé primaire est composée de `(course_id, sec_id, semester, year)` car un même cours peut être proposé plusieurs fois selon la section et la période.
 
----
+
 
 ### Question 2 : Explication du diagramme entité-association
 
@@ -49,7 +49,7 @@ Le schéma relationnel représente l’organisation pédagogique d’une univers
 
 Ce modèle permet donc de représenter les **cours, les enseignants, les étudiants et leurs interactions**.
 
----
+
 
 ### Question 3 : Création et peuplement de la base
 
